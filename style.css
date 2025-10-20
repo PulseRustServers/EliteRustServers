@@ -1,0 +1,97 @@
+/* Theme */
+:root {
+  --gold: #ffce3e;
+  --bg1: #0b0e14;
+  --bg2: #07080c;
+  --muted: #9ca3af;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  color:#fff;
+  background: radial-gradient(1200px 800px at 10% -10%, #121624 0%, #0a0c12 60%, #05070a 100%);
+  overflow-x:hidden;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+/* BG video + overlay */
+.bg-wrap{position:fixed;inset:0;z-index:-2;overflow:hidden}
+.bg-video{min-width:100%;min-height:100%;object-fit:cover;filter:brightness(0.35) saturate(1.2)}
+.bg-overlay{position:absolute;inset:0;background:radial-gradient(1200px 800px at 10% -10%, rgba(255,255,255,0.03), rgba(0,0,0,0.75));z-index:1}
+
+/* Navbar */
+.nav-blur{background:rgba(0,0,0,0.35);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08)}
+.brand-gold{color:var(--gold)}
+.search{width:180px;background:rgba(255,255,255,0.08);border:none;color:#eee}
+.search::placeholder{color:#b9b9b9}
+.nav-link{position:relative}
+.nav-link.underline::after,
+.nav-link:hover.underline::after{
+  content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity:0;transform:scaleX(0.7);transition:all .25s ease;
+}
+.nav-link.active.underline::after,.nav-link:hover.underline::after{opacity:1;transform:scaleX(1)}
+
+/* Hero */
+.hero{padding-top:9rem;padding-bottom:5rem}
+.stats small{color:#b6b8bd}
+
+/* Logo stage (right side) */
+.logo-stage{
+  position:relative;
+  width: 420px; height: 420px;
+  margin: 0 auto;
+}
+.main-logo{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:140px;filter:drop-shadow(0 0 18px var(--gold));
+  z-index:3;
+}
+.ring{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  border:2px solid var(--gold);border-radius:50%;opacity:.35;animation:pulse 4.2s infinite ease-in-out;
+}
+.r1{width:320px;height:320px}
+.r2{width:380px;height:380px;animation-delay:1.3s}
+.r3{width:420px;height:420px;opacity:.2;animation-delay:2.6s}
+
+@keyframes pulse{
+  0%{transform:translate(-50%,-50%) scale(1);opacity:.35}
+  50%{transform:translate(-50%,-50%) scale(1.08);opacity:.15}
+  100%{transform:translate(-50%,-50%) scale(1);opacity:.35}
+}
+
+/* Badges around the ring */
+.badge-card{
+  position:absolute;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;padding:14px 18px;font-size:.95rem;
+  color:#d7d7d8; backdrop-filter: blur(6px);
+  transition:.2s ease;
+  z-index:4;
+}
+.badge-card:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.shadow-soft{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+/* Positions relative to the circle */
+.b-top-left{left:-40px;top:30px}
+.b-top-right{right:-40px;top:-10px}
+.b-bottom-left{left:-30px;bottom:15px}
+
+/* Footer */
+.footer{background:rgba(0,0,0,.65);border-top:1px solid rgba(255,255,255,.08);backdrop-filter:blur(6px)}
+.footer-link{display:block;color:#b9bcc2;text-decoration:none;margin:.25rem 0}
+.footer-link:hover{color:var(--gold)}
+.link-gold{color:var(--gold);text-decoration:none}
+.link-gold:hover{text-decoration:underline}
+
+/* Responsive */
+@media (max-width: 991.98px){
+  .logo-stage{width:320px;height:320px}
+  .r1{width:250px;height:250px}
+  .r2{width:300px;height:300px}
+  .r3{width:330px;height:330px}
+  .b-top-left{left:-10px;top:-10px}
+  .b-top-right{right:-10px;top:-30px}
+  .b-bottom-left{left:-10px;bottom:-20px}
+}
